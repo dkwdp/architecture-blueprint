@@ -1,0 +1,6 @@
+{
+  "id": "level01",
+  "title": "Welcome Text",
+  "type": "text",
+  "markdown": "<p>Hello world. This is a text tutorial.</p>"
+}
