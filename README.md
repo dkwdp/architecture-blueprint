@@ -1,38 +1,93 @@
-# sv
+# Architecture – Der kleine Weg des Programmierens
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Structure
 
-## Creating a project
+### Maps
+* **src/lib/components/Map.svelte**
+    * Map rendering component.
+    * Props: `structure: MapStructure` (id, title, nodes, tiles).
+    * Renders background image
+    * Renders tiles following the content of the `tiles` array.
+    * Places level nodes at absolute `pos[x,y]`.
+    * On node click: navigates to `/map/{mapId}/level/{levelId}`.
 
-If you're seeing this, you've probably already done this step. Congrats!
+* **src/routes/map/[mapId]/+page.svelte**
+    * Map view page component.
+    * Defines the route for maps.
+    * Receives `{ structure }` from loader via `data`.
+    * Uses Map component.
 
-```sh
-# create a new project in the current directory
-npx sv create
+* **src/routes/map/[mapId]/+page.ts**
+    * Loader for a specific map (`[mapId]` dynamic param).
+    * Fetches `/content/{mapId}/structure.json`.
+    * Parses/validates with `MapStructure` (Zod); returns `{ structure, mapId }`.
+    * Throws on missing/invalid map data to surface errors early.
 
-# create a new project in my-app
-npx sv create my-app
+* **src/lib/schemas.ts**
+    * [Zod](https://zod.dev/) validation for map data loaded at runtime.
+    * Used in the map page loader to fail-fast on malformed `structure.json`.
+    * Could be improved by further error checking (for example invalid tile map).
+
+* **src/lib/types.ts**
+    * TypeScript interfaces mirroring schemas for compile-time safety.
+    * `MapStructure` and `MapNode` types used by map loader/component.
+
+### Tiles Format
+The `tiles` array is an array of strings, where each string defines a line of tiles.
+Each character represents a tile.
+Each tile has four possible connections (north, east, south, west).
+
+In the following this example map will be used (same as in figma).
+```
+  ┌───┐ 
+─┬┤ ┌─┼─
+ ╵└─┤ │ 
+    └─┘ 
 ```
 
-## Developing
+Each tile type is denoted by a single character.
+The following table shows the tile types and their connections:
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+| UTF-8 | Characters   | Description               | North | East | South | West |
+|-------|--------------|---------------------------|-------|------|-------|------|
+| `╵`   | `'`          | Dead end north            | X     |      |       |      |
+| `╶`   | `>`          | Dead end east             |       | X    |       |      |
+| `╷`   | `,`          | Dead end south            |       |      | X     |      |
+| `╴`   | `<`          | Dead end west             |       |      |       | X    |
+| `│`   | `I` `i` `\|` | Vertical line             |       | X    |       | X    |
+| `─`   | `-` `–`      | Horizontal line           | X     |      | X     |      |
+| `L`   | `L` `l`      | Corner: north & east      | X     | X    |       |      |
+| `┌`   | `r` `R`      | Corner: east & south      |       | X    | X     |      |
+| `┐`   | `7`          | Corner: west & south      |       |      | X     | X    |
+| `┘`   | `J` `j`      | Corner: north & west      | X     |      |       | X    |
+| `┬`   | `T` `t`      | T-junction: missing north |       | X    | X     | X    |
+| `┤`   | `q` `Q`      | T-junction: missing east  | X     |      | X     | X    |
+| `┴`   | `w` `W`      | T-junction: missing south | X     | X    |       | X    |
+| `├`   | `p` `P`      | T-junction: missing west  | X     | X    | X     |      |
+| `┼`   | `+`          | Cross: all directions     | X     | X    | X     | X    |
 
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+In the list format the example map would look like:
+```json
+"tiles": [
+    "  r---7 ",
+    "-Tq r-+-",
+    " 'L-q I ",
+    "    L-J "
+]
 ```
 
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
+If a tile A is having a connection to a tile B, but B has no connection to A or if B is empty, the connection from A to B is ignored as well.
+Example:
+```
+ I       │ 
+-+-  =  ─┴─ 
+---     ───
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+The plus in the middle has no connection to the tile to the south. This allows us to define the example map as follows:
+```
+  +---+
+-++ +-+-
+ I+-+ I
+    +-+
+```

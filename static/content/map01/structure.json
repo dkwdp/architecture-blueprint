@@ -1,10 +1,15 @@
 {
   "id": "map01",
-  "title": "Erste Map",
-  "background": "/content/map01/bg.png",
+  "title": "Scratch erste Schritte",
+  "background": "/content/map_backgrounds/bg01.png",
   "nodes": [
-    { "id": "level01", "title": "Welcome", "type": "text", "pos": [150, 280] },
-    { "id": "level02", "title": "Basics Video", "type": "video", "pos": [380, 220] }
+    { "id": "intro", "title": "Welcome", "type": "video", "pos": [0, 1] },
+    { "id": "coordinate_systems", "title": "Koordinaten Systeme", "type": "interactive", "pos": [1, 1] }
   ],
-  "edges": [["level01", "level02"]]
+  "tiles": [
+    "  r---7 ",
+    "-Tq r-+-",
+    " 'L-q I ",
+    "    L-J "
+  ]
 }
