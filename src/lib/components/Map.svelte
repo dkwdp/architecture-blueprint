@@ -6,6 +6,7 @@
 </script>
 
 <div>
+	<h1>{structure.title}</h1>
 	<ul>
 		{#each structure.nodes as n (n.id)}
 			<li>
