@@ -1,0 +1,10 @@
+{
+  "id": "map01",
+  "title": "Erste Map",
+  "background": "/content/map01/bg.png",
+  "nodes": [
+    { "id": "level01", "title": "Welcome", "type": "text", "pos": [150, 280] },
+    { "id": "level02", "title": "Basics Video", "type": "video", "pos": [380, 220] }
+  ],
+  "edges": [["level01", "level02"]]
+}
