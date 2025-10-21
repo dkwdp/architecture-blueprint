@@ -5,7 +5,7 @@
 
 </script>
 
-<div class="relative w-full max-w-4xl">
+<div>
 	<ul>
 		{#each structure.nodes as n (n.id)}
 			<li>
