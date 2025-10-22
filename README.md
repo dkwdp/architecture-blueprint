@@ -1,5 +1,39 @@
 # Architecture – Der kleine Weg des Programmierens
 
+```mermaid
+classDiagram
+    class Map {
+        +List~Level~ levels
+    }
+
+    class Level {
+        +List~Element~ elements
+    }
+
+    class Video {
+        <<Element>>
+        +url: string
+    }
+
+    class Text {
+        <<Element>>
+    }
+
+    class Interactive {
+        <<Element>>
+    }
+
+    class Switch {
+        <<Element>>
+    }
+
+    Map *-- Level
+    Level *-- Video
+    Level *-- Text
+    Level *-- Interactive
+    Level *-- Switch
+```
+
 # Maps
 * **src/lib/components/Map.svelte**
     * Map rendering component.
