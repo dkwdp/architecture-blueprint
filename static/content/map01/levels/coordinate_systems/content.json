@@ -1,0 +1,7 @@
+{
+  "id": "coordinate_systems",
+  "title": "Interaktives Tutorial zum Thema Koordinatensysteme",
+  "type": "interactive",
+  "entrypoint": "main.js",
+  "next_level": null
+}

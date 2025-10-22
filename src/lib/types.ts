@@ -2,10 +2,10 @@ export type LevelType = 'video'|'text'|'quiz'|'interactive'|'switch';
 
 interface LevelIdImpl {
 	mapId: string,
-	levelId: string,
-	serverUrl: string | null,
+	levelId?: string,
+	serverUrl?: string,
 }
-export type LevelId = LevelIdImpl | null;
+export type LevelId = LevelIdImpl | string | null;
 
 export interface LevelBase {
 	id: string,
@@ -67,7 +67,6 @@ export interface MapStructure {
   id: string;
   title: string;
   background: string;
-  nodes: MapNode[];
+  levels: MapNode[];
   tiles: string[];
 }
-

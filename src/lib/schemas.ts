@@ -2,17 +2,20 @@ import { z } from 'zod';
 
 export const LevelType = z.enum(['video','text','quiz','interactive','switch']);
 
-export const LevelId = z.object({
-	mapId: z.string(),
-	levelId: z.string(),
-	serverUrl: z.url().optional(),
-});
+export const LevelId = z.union([
+	z.object({
+		levelId: z.string(),
+		mapId: z.string().optional(),
+		serverUrl: z.url().optional(),
+	}),
+	z.string()
+]).nullable();
 
 export const LevelBase = z.object({
 	id: z.string(),
 	title: z.string(),
 	type: LevelType,
-	next_level: LevelId.optional(),
+	next_level: LevelId,
 });
 
 export const LevelContent = z.discriminatedUnion('type', [
@@ -49,7 +52,7 @@ export const MapStructure = z.object({
   id: z.string(),
   title: z.string(),
   background: z.string(),
-  nodes: z.array(z.object({
+  levels: z.array(z.object({
     id: z.string(),
     title: z.string(),
     type: LevelType,

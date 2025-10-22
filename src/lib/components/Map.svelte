@@ -8,7 +8,7 @@
 <div>
 	<h1>{structure.title}</h1>
 	<ul>
-		{#each structure.nodes as n (n.id)}
+		{#each structure.levels as n (n.id)}
 			<li>
 				<a href={resolve(`/map/${structure.id}/level/${n.id}`)}>{n.title}</a>
 			</li>
