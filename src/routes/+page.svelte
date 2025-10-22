@@ -1,8 +1,10 @@
 <script lang="ts">
-	const maps = [{ id:'map01', title:'Intro Map' }];
+	import { resolve } from '$app/paths';
 </script>
 
 <h1 class="text-3xl font-bold">LearnMaps</h1>
 <ul class="mt-4 list-disc pl-6">
-	<a class="underline" href="/map/01">Start</a>
+	<li>
+		<a class="underline" href="{resolve('/map/01')}">Start</a>
+	</li>
 </ul>
