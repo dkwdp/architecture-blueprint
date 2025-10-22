@@ -2,6 +2,8 @@
 
 ```mermaid
 classDiagram
+    note "Note: Work in progress"
+    
     class Map {
         +List~Level~ levels
     }
