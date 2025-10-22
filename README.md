@@ -1,8 +1,6 @@
 # Architecture – Der kleine Weg des Programmierens
 
-## Structure
-
-### Maps
+# Maps
 * **src/lib/components/Map.svelte**
     * Map rendering component.
     * Props: `structure: MapStructure` (id, title, nodes, tiles).
@@ -32,7 +30,7 @@
     * TypeScript interfaces mirroring schemas for compile-time safety.
     * `MapStructure` and `MapNode` types used by map loader/component.
 
-### Tiles Format
+## Tiles Format
 The `tiles` array is an array of strings, where each string defines a line of tiles.
 Each character represents a tile.
 Each tile has four possible connections (north, east, south, west).
@@ -91,3 +89,5 @@ The plus in the middle has no connection to the tile to the south. This allows u
  I+-+ I
     +-+
 ```
+
+# Levels
