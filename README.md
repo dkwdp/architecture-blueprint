@@ -2,38 +2,52 @@
 
 ```mermaid
 classDiagram
-    note "Note: Work in progress"
+    direction LR
     
     class Map {
-        +List~Level~ levels
+        id: string
+        title: string
+        background: string
+        levels: List~Level~
+        tiles: string
     }
+    
+    note for Map "`background` is a file path<br>to the background image to<br>use for the map visualization<br><br>`tiles` is the map tile layout<br>represented using characters<br>as defined in the table below"
 
     class Level {
-        +List~Element~ elements
+        id: string
+        title: string
+        nextLevels: List~string~
+        elements: List~Element~
     }
+    
+    note for Level "`nextLevels` is a list of level ids<br>referencing the levels that follow<br>this one on the map.<br><br>If it contains just a single entry,<br>there's just a single next level.<br><br>If there are multiple entries, the<br>level marks a branch-off where the<br>user may choose the level to<br>continue with from a list of options."
 
     class Video {
         <<Element>>
-        +url: string
+        url: string
     }
 
     class Text {
         <<Element>>
+        content: string
     }
 
     class Interactive {
         <<Element>>
+        entrypoint: string
     }
-
-    class Switch {
+    
+    class StartButton {
         <<Element>>
+        link: string
     }
 
-    Map *-- Level
-    Level *-- Video
-    Level *-- Text
-    Level *-- Interactive
-    Level *-- Switch
+    Map o-- Level
+    Level o-- Video
+    Level o-- Text
+    Level o-- Interactive
+    Level o-- StartButton
 ```
 
 # Maps
