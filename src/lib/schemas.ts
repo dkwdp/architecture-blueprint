@@ -1,6 +1,8 @@
 import { z } from 'zod';
 
-export const LevelType = z.enum(['video','text','quiz','interactive','switch']);
+export const ElementType = z.enum(
+	['video','text','quiz','interactive','switch','button']
+);
 
 export const LevelId = z.union([
 	z.object({
@@ -11,20 +13,16 @@ export const LevelId = z.union([
 	z.string()
 ]).nullable();
 
-export const LevelBase = z.object({
-	id: z.string(),
-	title: z.string(),
-	type: LevelType,
-	next_level: LevelId,
+export const ElementBase = z.object({
+	type: ElementType,
 });
 
-export const LevelContent = z.discriminatedUnion('type', [
-	LevelBase.extend({
+export const LevelElement = z.discriminatedUnion('type', [
+	ElementBase.extend({
 		type: z.literal('video'),
-		video_url: z.url(),
-		start_button_url: z.url(),
+		url: z.url(),
 	}),
-	LevelBase.extend({
+	ElementBase.extend({
 		type: z.literal('text'),
 		markdown: z.string()
 	}),
@@ -38,13 +36,19 @@ export const LevelContent = z.discriminatedUnion('type', [
 		}))
 	}),
 	 */
-	LevelBase.extend({
+	ElementBase.extend({
 		type: z.literal('interactive'),
 		entrypoint: z.string(),
 	}),
-	LevelBase.extend({
+	ElementBase.extend({
 		type: z.literal('switch'),
 		next_level: z.array(LevelId),
+	}),
+	ElementBase.extend({
+		type: z.literal('button'),
+		url: z.url(),
+		text: z.string(),
+		target: z.string().optional(),
 	})
 ]);
 
@@ -55,9 +59,15 @@ export const MapStructure = z.object({
   levels: z.array(z.object({
     id: z.string(),
     title: z.string(),
-    type: LevelType,
     pos: z.tuple([z.int(),z.int()])
   })),
   tiles: z.array(z.string())
+});
+
+export const Level = z.object({
+	id: z.string(),
+	title: z.string(),
+	next_level: LevelId,
+	elements: z.array(LevelElement),
 });
 

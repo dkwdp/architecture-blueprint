@@ -3,8 +3,8 @@
   "title": "Scratch erste Schritte",
   "background": "/content/map_backgrounds/bg01.png",
   "levels": [
-    { "id": "intro", "title": "Welcome", "type": "video", "pos": [0, 1] },
-    { "id": "coordinate_systems", "title": "Koordinaten Systeme", "type": "interactive", "pos": [1, 1] }
+    { "id": "intro", "title": "Welcome", "pos": [0, 1] },
+    { "id": "coordinate_systems", "title": "Koordinaten Systeme", "pos": [1, 1] }
   ],
   "tiles": [
     "  r---7 ",

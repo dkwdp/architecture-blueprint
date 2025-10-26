@@ -1,7 +1,16 @@
 {
   "id": "coordinate_systems",
   "title": "Interaktives Tutorial zum Thema Koordinatensysteme",
-  "type": "interactive",
-  "entrypoint": "main.js",
-  "next_level": null
+  "next_level": null,
+  "elements": [
+    {
+      "type": "interactive",
+      "entrypoint": "main.js"
+    },
+    {
+      "type": "button",
+      "text": "Start",
+      "url": "https://scratch.mit.edu/projects/editor"
+    }
+  ]
 }

@@ -1,4 +1,8 @@
-<script lang="ts"> export let data; </script>
+<script lang="ts">
+	import type { VideoElement } from '$lib/types';
+
+	export let element: VideoElement;
+</script>
 
 <!--
 <video class="w-full rounded" controls src={data.level.url}><track src="" kind="captions" /></video>
@@ -7,4 +11,4 @@
 {/if}
 <iframe width="1298" height="730" src="{data.video_url}" title="{data.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 -->
-<iframe width="1024" height="576" src="{data.video_url}" title="{data.title}" allow="web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="1024" height="576" src="{element.url}" title="Some Video" allow="web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

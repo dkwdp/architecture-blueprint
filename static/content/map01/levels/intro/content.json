@@ -1,8 +1,16 @@
 {
   "id": "intro",
   "title": "Welcome Text",
-  "type": "video",
   "next_level": "coordinate_systems",
-  "video_url": "https://youtu.be/pDEb45Get2E?list=PLNpMof0wu8uQRZSwUCvoo6cxjm7mqUKkM",
-  "start_button_url": "https://scratch.mit.edu"
+  "elements": [
+    {
+      "type": "video",
+      "url": "https://youtu.be/pDEb45Get2E?list=PLNpMof0wu8uQRZSwUCvoo6cxjm7mqUKkM"
+    },
+    {
+      "type": "button",
+      "text": "Start",
+      "url": "https://scratch.mit.edu/projects/editor"
+    }
+  ]
 }

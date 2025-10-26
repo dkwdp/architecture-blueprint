@@ -1,29 +1,25 @@
-export type LevelType = 'video'|'text'|'quiz'|'interactive'|'switch';
-
 interface LevelIdImpl {
-	mapId: string,
-	levelId?: string,
+	levelId: string,
+	mapId?: string,
 	serverUrl?: string,
 }
+
 export type LevelId = LevelIdImpl | string | null;
 
-export interface LevelBase {
-	id: string,
-	title: string,
-	type: LevelType,
+export type ElementType = 'video'|'text'|'quiz'|'interactive'|'switch'|"button";
+
+export interface LevelElement {
+	type: ElementType,
 }
 
-export interface LevelVideo extends LevelBase {
+export interface VideoElement extends LevelElement {
 	type: 'video';
-	video_url: string;
-	start_button_url: string;
-	next_level: LevelId,
+	url: string;
 }
 
-export interface LevelText extends LevelBase {
+export interface TextElement extends LevelElement {
 	type: 'text';
 	markdown: string;
-	next_level: LevelId,
 }
 
 /*
@@ -34,32 +30,36 @@ export interface LevelQuiz extends LevelBase {
     choices: string[];
     answer: number;
   }[];
-	next_level: LevelId,
 }
  */
 
-export interface LevelInteractive extends LevelBase {
+export interface InteractiveElement extends LevelElement {
 	type: 'interactive';
 	entrypoint: string;
-	next_level: LevelId,
 }
 
-export interface LevelSwitch extends LevelBase {
+export interface SwitchElement extends LevelElement {
 	type: 'switch';
-	next_level: (LevelId)[];
+	next_level: LevelId;
 }
 
-export type LevelContent =
-	| LevelVideo
-	| LevelText
-	// | LevelQuiz
-	| LevelInteractive
-	| LevelSwitch;
+export interface ButtonElement extends LevelElement {
+	type: 'button';
+	url: string;
+	text: string;
+	target?: string;
+}
+
+export interface Level {
+	id: string,
+	title: string,
+	next_level?: LevelId,
+	elements: LevelElement[],
+}
 
 export interface MapNode {
   id: string;
   title: string;
-  type: LevelType;
   pos: [number, number];
 }
 

@@ -1,4 +1,4 @@
-import { LevelContent as LevelSchema } from '$lib/schemas';
+import { Level as LevelSchema } from '$lib/schemas';
 
 export const load = async ({ params, fetch }) => {
   const res = await fetch(`/content/${params.mapId}/levels/${params.levelId}/content.json`);
