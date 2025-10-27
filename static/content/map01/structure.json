@@ -4,7 +4,8 @@
   "background": "/content/map_backgrounds/bg01.png",
   "levels": [
     { "id": "intro", "title": "Welcome", "pos": [0, 1] },
-    { "id": "coordinate_systems", "title": "Koordinaten Systeme", "pos": [1, 1] }
+    { "id": "coordinate_systems", "title": "Koordinaten Systeme", "pos": [1, 1] },
+    { "id": "switch01", "title": "Spiele oder Geschichten?", "pos": [2, 1] }
   ],
   "tiles": [
     "  r---7 ",

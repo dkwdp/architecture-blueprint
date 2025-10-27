@@ -8,6 +8,10 @@
       "url": "https://youtu.be/pDEb45Get2E?list=PLNpMof0wu8uQRZSwUCvoo6cxjm7mqUKkM"
     },
     {
+      "type": "text",
+      "markdown": "Hier ist eine kurze Beschreibung für das Video."
+    },
+    {
       "type": "button",
       "text": "Start",
       "url": "https://scratch.mit.edu/projects/editor"
