@@ -42,7 +42,7 @@ export const LevelElement = z.discriminatedUnion('type', [
 	}),
 	ElementBase.extend({
 		type: z.literal('switch'),
-		next_level: z.array(LevelId),
+		next_level: LevelId,
 	}),
 	ElementBase.extend({
 		type: z.literal('button'),

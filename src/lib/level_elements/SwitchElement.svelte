@@ -9,12 +9,12 @@
 
   function go() {
 		if (element.next_level) {
-			const level_id: string = normalize_level_id(element.next_level, $page.params.mapId);
+			const level_id: string = normalize_level_id(element.next_level, page.params.mapId);
 			goto(resolve(level_id));
 		}
 	}
 </script>
 
 <button class="px-3 py-2 rounded-lg shadow" on:click={go}>
-	Nice description of level {normalize_level_id(element.next_level, $page.params.mapId)}.
+	Nice description of level {normalize_level_id(element.next_level, page.params.mapId)}.
 </button>
