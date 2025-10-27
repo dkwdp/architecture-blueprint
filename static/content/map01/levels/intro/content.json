@@ -1,6 +1,6 @@
 {
   "id": "intro",
-  "title": "Welcome Text",
+  "title": "Level: Welcome Text",
   "next_level": "coordinate_systems",
   "elements": [
     {

@@ -1,6 +1,6 @@
 {
   "id": "map01",
-  "title": "Scratch erste Schritte",
+  "title": "Map: Scratch erste Schritte",
   "background": "/content/map_backgrounds/bg01.png",
   "levels": [
     { "id": "intro", "title": "Welcome", "pos": [0, 1] },

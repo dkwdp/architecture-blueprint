@@ -116,12 +116,14 @@ The following table shows the tile types and their connections:
 
 In the list format the example map would look like:
 ```json
-"tiles": [
-    "  r---7 ",
-    "-Tq r-+-",
-    " 'L-q I ",
-    "    L-J "
-]
+{
+    "tiles": [
+        "  r---7 ",
+        "-Tq r-+-",
+        " 'L-q I ",
+        "    L-J "
+    ]
+}
 ```
 
 If a tile A is having a connection to a tile B, but B has no connection to A or if B is empty, the connection from A to B is ignored as well.
