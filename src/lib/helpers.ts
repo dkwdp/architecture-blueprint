@@ -1,6 +1,7 @@
 import type { LevelId } from '$lib/types';
 import { goto } from '$app/navigation';
 import { resolve } from '$app/paths';
+import { page } from '$app/state';
 
 export function normalize_level_id(
 	level_id: LevelId,
@@ -42,6 +43,15 @@ export function normalize_and_goto(
 ) {
 	const { levelId, mapId } = normalize_level_id(level_id, current_map);
 	goto(resolve(`/map/[mapId]/level/[levelId]`, { levelId, mapId })).catch(err => {
-		console.error('Failed to go to level', levelId, 'in map', mapId, err)
+		console.error('Failed to go to level', levelId, 'in map', mapId, err);
+	});
+}
+
+export function navigateToMap(mapId?: string) {
+	mapId = mapId ?? page.params.mapId;
+	if (!mapId) throw new Error('mapId is undefined');
+
+	goto(resolve(`/map/[mapId]`, { mapId })).catch(err => {
+		console.error('Failed to go to map ', mapId, err);
 	});
 }

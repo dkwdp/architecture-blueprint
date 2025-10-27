@@ -1,11 +1,6 @@
 <script lang="ts">
   import type { Level } from '$lib/types';
   export let data: { level: Level, mapId: string };
-	import { goto } from '$app/navigation';
-	import { page } from '$app/state';
-	import { resolve } from '$app/paths';
-
-	console.log(data);
 
 	import VideoElement from '$lib/level_elements/VideoElement.svelte';
 	import TextElement from '$lib/level_elements/TextElement.svelte';
@@ -13,33 +8,16 @@
 	import SwitchElement from '$lib/level_elements/SwitchElement.svelte';
 	import ButtonElement from '$lib/level_elements/ButtonElement.svelte';
 	import NextLevelButton from '$lib/level_elements/NextLevelButton.svelte';
+	import { navigateToMap } from '$lib/helpers';
 
-	const element_registry = {
-		video: VideoElement,
-		text: TextElement,
-		interactive: InteractiveElement,
-		switch: SwitchElement,
-		button: ButtonElement,
-	};
-
-	function navigateToMap() {
-		// The path is currently something like '/map/01/level/intro'
-		const segments = page.url.pathname.split('/').filter(Boolean);
-
-		// Remove the last two segments
-		segments.pop();
-		segments.pop();
-
-		// Join them back and prepend the leading slash to get '/map/01'
-		const targetPath: string = '/' + segments.join('/');
-
-		goto(resolve(targetPath));
+	function navBack() {
+		navigateToMap();
 	}
 </script>
 
 <div class="max-w-3xl space-y-4">
   <nav>
-		<button on:click={navigateToMap}>Map</button>
+		<button on:click={navBack}>Map</button>
   </nav>
   <h1 class="text-2xl font-bold">{data.level.title}</h1>
 	{#each data.level.elements as element, i (i)}
