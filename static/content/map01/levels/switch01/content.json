@@ -1,0 +1,15 @@
+{
+  "id": "switch01",
+  "title": "Spiele oder Geschichten?",
+  "next_level": null,
+  "elements": [
+    {
+      "type": "switch",
+      "next_level": "intro"
+    },
+    {
+      "type": "switch",
+      "next_level": "coordinate_systems"
+    }
+  ]
+}
