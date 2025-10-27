@@ -2,15 +2,15 @@
 	import type { ButtonElement } from '$lib/types';
 	export let element: ButtonElement;
 
-	let scratchWindow: WindowProxy | null = null;
+	let openWindow: WindowProxy | null = null;
 
-	function openOrFocusScratch() {
-		if (scratchWindow && !scratchWindow.closed) {
-			scratchWindow.focus();
+	function openOrFocus() {
+		if (openWindow && !openWindow.closed) {
+			openWindow.focus();
 		} else {
-			scratchWindow = window.open(element.url, element.target);
+			openWindow = window.open(element.url, element.target);
 		}
 	}
 </script>
 
-<button onclick="{openOrFocusScratch}">{element.text}</button>
+<button onclick="{openOrFocus}">{element.text}</button>

@@ -12,6 +12,7 @@
 	import InteractiveElement from '$lib/level_elements/InteractiveElement.svelte';
 	import SwitchElement from '$lib/level_elements/SwitchElement.svelte';
 	import ButtonElement from '$lib/level_elements/ButtonElement.svelte';
+	import NextLevelButton from '$lib/level_elements/NextLevelButton.svelte';
 
 	const element_registry = {
 		video: VideoElement,
@@ -54,6 +55,10 @@
 			<ButtonElement {element}/>
 		{/if}
 	{/each}
+
+	{#if data.level.next_level}
+		<NextLevelButton levelId={data.level.next_level} />
+	{/if}
 
   <slot/>
 </div>

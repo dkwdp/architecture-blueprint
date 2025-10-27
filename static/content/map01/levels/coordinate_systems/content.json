@@ -1,7 +1,7 @@
 {
   "id": "coordinate_systems",
   "title": "Interaktives Tutorial zum Thema Koordinatensysteme",
-  "next_level": null,
+  "next_level": "switch01",
   "elements": [
     {
       "type": "interactive",
