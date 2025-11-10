@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { ButtonElement } from '$lib/types';
-	export let element: ButtonElement;
+	import type { ButtonElementData } from '$lib/types';
+	export let element: ButtonElementData;
 
 	let openWindow: WindowProxy | null = null;
 
