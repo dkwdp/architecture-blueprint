@@ -20,7 +20,7 @@
 		width: 6rem;
 		font-size: 5rem;
 		border-radius: 8px;
-		border: 2px solid #004C61;;
+		border: 2px solid #004C61;
 		font-family: "Changa One", sans-serif;
 		box-shadow: 0px 6px #002b63;
 		justify-content: center;
