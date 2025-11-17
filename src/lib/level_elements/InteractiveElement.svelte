@@ -11,7 +11,6 @@
   let { element, level, mapId } = $props() as Props;
 
 	const scriptUrl = `/content/${mapId}/levels/${level.id}/${element.entrypoint}`;
-	console.log('scriptUrl', scriptUrl);
 
 	async function loadTutorial() {
 		const response = await fetch(scriptUrl);
@@ -52,5 +51,5 @@
 </script>
 
 <div id="output-container" style="display: flex; justify-content: center;">
-	<iframe title="Tutorial Window" style="width: 60%; height: calc(60vw * 9/16);" id="output-frame"></iframe>
+	<iframe title="Tutorial Window" sandbox="allow-scripts" style="width: 60%; height: calc(60vw * 9/16);" id="output-frame"></iframe>
 </div>
