@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { InteractiveElement } from '$lib/types';
-  export let element: InteractiveElement;
+	import type { InteractiveElementData } from '$lib/types';
+  export let element: InteractiveElementData;
 </script>
 
 <p>Interactive module: <code>{element.entrypoint}</code></p>

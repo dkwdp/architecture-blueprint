@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { VideoElement } from '$lib/types';
+	import type { VideoElementData } from '$lib/types';
 
-	export let element: VideoElement;
+	export let element: VideoElementData;
 </script>
 
 <!--

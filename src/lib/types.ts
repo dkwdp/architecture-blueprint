@@ -8,16 +8,16 @@ export type LevelId = LevelIdImpl | string | null;
 
 export type ElementType = 'video'|'text'|'quiz'|'interactive'|'switch'|"button";
 
-export interface LevelElement {
+export interface LevelElementData {
 	type: ElementType,
 }
 
-export interface VideoElement extends LevelElement {
+export interface VideoElementData extends LevelElementData {
 	type: 'video';
 	url: string;
 }
 
-export interface TextElement extends LevelElement {
+export interface TextElementData extends LevelElementData {
 	type: 'text';
 	markdown: string;
 }
@@ -33,17 +33,17 @@ export interface LevelQuiz extends LevelBase {
 }
  */
 
-export interface InteractiveElement extends LevelElement {
+export interface InteractiveElementData extends LevelElementData {
 	type: 'interactive';
 	entrypoint: string;
 }
 
-export interface SwitchElement extends LevelElement {
+export interface SwitchElementData extends LevelElementData {
 	type: 'switch';
 	next_level: LevelId;
 }
 
-export interface ButtonElement extends LevelElement {
+export interface ButtonElementData extends LevelElementData {
 	type: 'button';
 	url: string;
 	text: string;
@@ -54,7 +54,7 @@ export interface Level {
 	id: string,
 	title: string,
 	next_level?: LevelId,
-	elements: LevelElement[],
+	elements: LevelElementData[],
 }
 
 export interface MapNode {

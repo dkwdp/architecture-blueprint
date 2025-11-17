@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { SwitchElement } from '$lib/types';
+	import type { SwitchElementData } from '$lib/types';
 	import { normalize_and_goto, normalize_level_id } from '$lib/helpers';
 	import { page } from '$app/state';
 
-	export let element: SwitchElement;
+	export let element: SwitchElementData;
 
   function go() {
 		if (element.next_level) {

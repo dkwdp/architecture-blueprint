@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { TextElement } from "$lib/types";
-	export let element: TextElement;
+	import type { TextElementData } from "$lib/types";
+	export let element: TextElementData;
 </script>
 
 <div>

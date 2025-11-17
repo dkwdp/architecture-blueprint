@@ -1,5 +1,19 @@
-# Architecture – Der kleine Weg des Programmierens
+# Der kleine Weg des Programmierens
 
+*Siehe [hier](README_de.md) für eine Übersicht auf deutsch.*
+
+Implementation of "Der kleine Weg des Programmierens" a german learning platform for kids and teens.
+
+## Installation and Testing
+```sh
+# install dependencies
+npm install
+
+# run dev server
+npm run dev -- --open
+```
+
+## Architecture
 ```mermaid
 classDiagram
     direction LR
