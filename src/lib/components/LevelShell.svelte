@@ -26,7 +26,7 @@
 		{:else if element.type === 'video'}
 			<VideoElement {element}/>
 		{:else if element.type === 'interactive'}
-			<InteractiveElement {element}/>
+			<InteractiveElement element={element} level={data.level} mapId={data.mapId}/>
 		{:else if element.type === 'switch'}
 			<SwitchElement {element}/>
 		{:else if element.type === 'button'}
