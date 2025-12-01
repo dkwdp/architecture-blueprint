@@ -8,7 +8,8 @@
 		level: Level;
 		mapId: string;
 	}
-  let { element, level, mapId } = $props() as Props;
+
+	let { element, level, mapId } = $props() as Props;
 
 	async function loadTutorial() {
 		const outputFrame = document.getElementById('output-frame');
@@ -41,9 +42,13 @@
 	onMount(() => {
 		loadTutorial();
 	});
-
 </script>
 
 <div id="output-container" style="display: flex; justify-content: center;">
-	<iframe title="Tutorial Window" sandbox="allow-scripts" style="width: 60%; height: calc(60vw * 9/16);" id="output-frame"></iframe>
+	<iframe
+		title="Tutorial Window"
+		sandbox="allow-scripts"
+		style="width: 60%; height: calc(60vw * 9/16);"
+		id="output-frame"
+	></iframe>
 </div>
