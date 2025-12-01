@@ -10,15 +10,9 @@
 	}
   let { element, level, mapId } = $props() as Props;
 
-	const scriptUrl = `/content/${mapId}/levels/${level.id}/${element.entrypoint}`;
-
 	async function loadTutorial() {
-		const response = await fetch(scriptUrl);
-		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
-		}
-		const scriptCode = await response.text();
 		const outputFrame = document.getElementById('output-frame');
+		const scriptUrl = `${window.location.origin}/content/${mapId}/levels/${level.id}/${element.entrypoint}`;
 
 		// create HTML
 		const htmlContent = `
@@ -29,7 +23,7 @@
 </head>
 <body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.1/p5.min.js"><\/script>
-<script>${scriptCode}<\/script>
+<script src="${scriptUrl}"><\/script>
 </body>
 </html>
 `;
